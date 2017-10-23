@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/agendas');
+//mongoose.connect('mongodb://191.176.120.190:27017/agendas');
+mongoose.connect('mongodb://paulo.cayres:pccr0976@ds229435.mlab.com:29435/finances');
 
 var agendaSchema = new mongoose.Schema(
     {

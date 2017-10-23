@@ -35,9 +35,9 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST ONE Agenda. */
-router.post('/agendas', function(req, res, next) {
+router.post('/finances', function(req, res, next) {
   var db = require('../db');
-  var Agenda = db.Mongoose.model('agendas', db.AgendaSchema, 'agendas');
+  var Agenda = db.Mongoose.model('finances', db.AgendaSchema, 'agendas');
   //var newAgenda = new Agenda({name: req.body.name, email: req.body.email});
 
 
@@ -56,11 +56,11 @@ router.post('/agendas', function(req, res, next) {
 
 
 /* Put - Altera uma agenda existente*/
-router.put('/agendas/:id', function(req, res, next) {
+router.put('/finances/:id', function(req, res, next) {
   console.log(req.params.id);
   console.log(req.body);
   var db = require('../db');
-  var Agenda = db.Mongoose.model('agendas', db.AgendaSchema, 'agendas');
+  var Agenda = db.Mongoose.model('finances', db.AgendaSchema, 'agendas');
 
 
   Agenda.findByIdAndUpdate(req.body._id, req.body, function(err, agenda) {
@@ -77,9 +77,9 @@ router.put('/agendas/:id', function(req, res, next) {
 });
 
 /* GET all agendas.*/
-router.get('/agendas', function(req, res, next) {
+router.get('/finances', function(req, res, next) {
   var db = require('../db');
-  var Agenda = db.Mongoose.model('agendas', db.AgendaSchema, 'agendas');
+  var Agenda = db.Mongoose.model('finances', db.AgendaSchema, 'agendas');
 
   Agenda.find({}).lean().exec(function(e, docs) {
     res.json(docs);
@@ -88,9 +88,9 @@ router.get('/agendas', function(req, res, next) {
 });
 
 /* GET ONE Agenda. */
-router.get('/agendas/:id', function(req, res, next) {
+router.get('/finances/:id', function(req, res, next) {
   var db = require('../db');
-  var Agenda = db.Mongoose.model('agendas', db.AgendaSchema, 'agendas');
+  var Agenda = db.Mongoose.model('finances', db.AgendaSchema, 'agendas');
   Agenda.find({_id: req.params.id}).lean().exec(function(e, docs) {
     res.json(docs);
     res.end();
@@ -100,7 +100,7 @@ router.get('/agendas/:id', function(req, res, next) {
 /* GET Agenda Count. */
 router.get('/count', function(req, res, next) {
   var db = require('../db');
-  var Agenda = db.Mongoose.model('agendas', db.AgendaSchema, 'agendas');
+  var Agenda = db.Mongoose.model('finances', db.AgendaSchema, 'agendas');
   Agenda.count({}).exec(function(e, docs) {
     res.json(docs);
     res.end();
@@ -109,7 +109,7 @@ router.get('/count', function(req, res, next) {
 
 
 /* GET agendas pagination. */
-router.post('/agendas', function(req, res, next) {
+router.post('/finances', function(req, res, next) {
   var db = require('../db');
   console.log(req.body);
 
@@ -128,7 +128,7 @@ router.post('/agendas', function(req, res, next) {
     var max = Number(req.body.max);
   }
 
-  var Agenda = db.Mongoose.model('agendas', db.AgendaSchema, 'agendas');
+  var Agenda = db.Mongoose.model('finances', db.AgendaSchema, 'agendas');
   Agenda.find({})
       .limit(max)
       .skip(page * max)
@@ -140,9 +140,9 @@ router.post('/agendas', function(req, res, next) {
 });
 
 
-router.delete('/agendas/:id', function(req, res, next) {
+router.delete('/finances/:id', function(req, res, next) {
   var db = require('../db');
-  var Agenda = db.Mongoose.model('agendas', db.AgendaSchema, 'agendas');
+  var Agenda = db.Mongoose.model('finances', db.AgendaSchema, 'agendas');
   Agenda.find({_id: req.params.id}).remove(function(err) {
     if (err) {
       res.status(500).json({error: err.message});
